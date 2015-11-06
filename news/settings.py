@@ -69,6 +69,10 @@ TEMPLATES = [
     },
 ]
 
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates').replace('\\', '/'),
+)
+
 WSGI_APPLICATION = 'news.wsgi.application'
 
 
