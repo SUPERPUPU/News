@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from parse.views import hello_world, parse
+from parse.views import parse
 
 
 urlpatterns = [
