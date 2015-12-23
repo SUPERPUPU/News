@@ -14,7 +14,11 @@
     <body>
         <h1>google新聞標題列表</h1>
         <h2 class="title">
-            {{News.title}}
+            {% for i in title %}
+            <div>
+            {{i}}
+            </div>
+            {% endfor %}
         </h2>
 
         <em>{{ current_time }}</em>

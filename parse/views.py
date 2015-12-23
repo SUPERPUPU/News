@@ -28,7 +28,7 @@ def parse(request):
     #news_list = News.objects.all()
 	return render(request,
                   'parse.html',
-                  {'News': News})
+                  {'title': title})
 
 
 
