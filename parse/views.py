@@ -24,10 +24,11 @@ def parse(request):
 		#News.objects.create(title = item.select('span')[0].text.encode('utf-8'))
 		#title.append(item.select('span')[0].text)
 		title.append(json.dumps(item.select('span')[0].text,ensure_ascii=False))
+		News.objects.create(title = json.dumps(item.select('span')[0].text,ensure_ascii=False))
     #news_list = News.objects.all()
 	return render(request,
                   'parse.html',
-                  {'title': title})
+                  {'News': News})
 
 
 
