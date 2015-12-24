@@ -19,7 +19,7 @@
                 font-style: inherit;
                 font-weight: bold;
                 text-align: center;
-
+                width: 100%;
                 display: inline-block;
                   vertical-align: middle;
                   -webkit-transform: translateZ(0);
@@ -41,6 +41,10 @@
               color: white;
             }
 
+            #body{
+                max-width: 100%;
+            }
+
             a{
                 text-decoration: none;
             }
@@ -51,16 +55,24 @@
                 color: #FFFF00;
             }
             .paragraph{
+                width: 28%;
+                min-width: 200px;
+                min-height: 350px;
                 margin-top:15px; 
-                margin-left:10%; 
-                margin-right:10%; 
+                margin-left:10px; 
+                margin-right:auto; 
                 margin-bottom:20px; 
-                border: 2px solid 000000; 
+                border: 4px solid #444444; 
                 padding-top:5px; 
                 padding-left:15px; 
                 padding-right:15px; 
                 padding-bottom:10px;
                 border-style: dotted;
+                position: relative;
+                display: inline-block;
+
+                -webkit-flex: 1;
+                flex: 1;
 
                 display: inline-block;
                 vertical-align: middle;
@@ -95,6 +107,8 @@
     </head>
     <body>
         <div id = "main-title">Google新聞標題列表</div>
+
+        <div id = "body">
         {% for i in news_list %}
 
         <div class = "paragraph">
@@ -117,8 +131,7 @@
         </p>
     </div>
             {% endfor %}
-        
-        
+        </div>
         <em>{{ current_time }}</em>
     </body>
 </html>
