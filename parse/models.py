@@ -8,6 +8,7 @@ class News(models.Model):
     content = models.TextField(blank=True)
     source =  models.TextField(blank=True)
     url = models.TextField(blank=True)
+    txt = models.TextField(blank=True)
     #num = models.IntegerField(max_length=20)
     #photo = models.URLField(blank=True)
     #created_at = models.DateTimeField(auto_now_add=True)

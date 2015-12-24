@@ -30,24 +30,30 @@ def parse(request):
 	#con = lite.connect('db.sqlite3')
 	#cur = con.cursor()
 	#cur.execute (dellete)
+
 	News.objects.all().delete()
+
 	for item in soup.select('.esc-body'):
 		#News.objects.create(title = item.select('span')[0].text.encode('utf-8'))
 		#title.append(item.select('span')[0].text)
 		#title.append(json.dumps(item.select('span')[0].text,ensure_ascii=False))
-		title = json.dumps(item.select('span')[0].text,ensure_ascii=False)
-		content = json.dumps(item.select('.esc-lead-snippet-wrapper')[0].text,ensure_ascii=False)
+		title = json.dumps(item.select('span')[0].text,ensure_ascii=False).strip('""')
+		content = json.dumps(item.select('.esc-lead-snippet-wrapper')[0].text,ensure_ascii = False).strip('"')
 		url = item.find_all("a", {'href':True})[0].get('href')
-		source = json.dumps(item.find_all("span", class_="al-attribution-source")[0].text,ensure_ascii=False)
+		source = json.dumps(item.find_all("span", class_="al-attribution-source")[0].text,ensure_ascii=False).strip('"')
 		#photo = json.dumps(item.select('img')[0].text,ensure_ascii=False)
 		
-		#url2 = url.get('href')
+		#resurl = requests.get(url)
 
-			
+		#bfsoup = BeautifulSoup (resurl.text, "html.parser")
+
+		#txt = json.dumps(bfsoup.find_all('.story_content', "p")[0].text,ensure_ascii=False)
+
     	#add to database
 		#cur.execute (sql, data)
 		News.objects.create(title = title, content = content, source = source, url = url)
 	
+
 	#con.commit()
 	
 	#news_list = NewsDB.objects.all()
@@ -62,14 +68,14 @@ def parse(request):
                   'parse.html',{'news_list':news_list}
                  )
 
-def home(request):
+#def home(request):
     # get all the posts
     
-	news_list = NewsDB.objects.all()
+#	news_list = NewsDB.objects.all()
 
-	return render(request,
-					'parse.html',
-					{'news_list': news_list})
+#	return render(request,
+	#				'parse.html',
+	#				{'news_list': news_list})
 
 
 

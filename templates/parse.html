@@ -3,32 +3,119 @@
     <head>
         <title>新聞標題</title>
         <style>
+         <style type="text/css"> 
+            div { 
+                background-color:#FF0000; 
+            } 
             body {
-                background-color: lightyellow;
+                background-color: #CCBBFF;
             }
             em {
                 color: LightSeaGreen;
             }
-        </style>
+            #main-title{
+                font-family: 微軟正黑體, arial;
+                font-size: 1.5cm;
+                font-style: inherit;
+                font-weight: bold;
+                text-align: center;
+
+                display: inline-block;
+                  vertical-align: middle;
+                  -webkit-transform: translateZ(0);
+                  transform: translateZ(0);
+                  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+                  -webkit-backface-visibility: hidden;
+                  backface-visibility: hidden;
+                  -moz-osx-font-smoothing: grayscale;
+                  overflow: hidden;
+                  -webkit-transition-duration: 0.3s;
+                  transition-duration: 0.3s;
+                -webkit-transition-property: color, background-color;
+                transition-property: color, background-color;
+            }
+
+
+            #main-title:hover, #main-title:focus, #main-title:active {
+              background-color: #FF8800;
+              color: white;
+            }
+
+            a{
+                text-decoration: none;
+            }
+            a:link{
+                color: #EE7700;
+            }
+            a:hover{
+                color: #FFFF00;
+            }
+            .paragraph{
+                margin-top:15px; 
+                margin-left:10%; 
+                margin-right:10%; 
+                margin-bottom:20px; 
+                border: 2px solid 000000; 
+                padding-top:5px; 
+                padding-left:15px; 
+                padding-right:15px; 
+                padding-bottom:10px;
+                border-style: dotted;
+
+                display: inline-block;
+                vertical-align: middle;
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-transition-duration: 0.3s;
+                transition-duration: 0.3s;
+                -webkit-transition-property: transform;
+                transition-property: transform;
+            }
+            .paragraph:hover{
+
+            }
+            .content{
+                font-size: 20px;
+                line-height: 26px;
+            }
+            .title{
+                font-size: 28px;
+                text-align: center;
+            }
+            .paragraph:hover, .paragraph:focus, .paragraph:active {
+                  -webkit-transform: scale(1.1);
+                  transform: scale(1.1);
+            }
+
+          </style>
     </head>
     <body>
-        <h1>google新聞標題列表</h1>
+        <div id = "main-title">Google新聞標題列表</div>
         {% for i in news_list %}
-        <p>
+
+        <div class = "paragraph">
+
         <h2 class="title">
             
-            <div>
+            <div class = "title-url">
                 <a href="{{i.url}}"> {{i.title}}
                     </a>
             </div>
 
         </h2>
         
-            <div>
+            <div class = "content">
                 {{i.content}}
             </div>
+        <p class = "text">
+            {{i.txt}}
         
         </p>
+    </div>
             {% endfor %}
         
         
