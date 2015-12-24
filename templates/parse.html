@@ -4,7 +4,7 @@
         <title>新聞標題</title>
         <style>
             body {
-               background-color: lightyellow;
+                background-color: lightyellow;
             }
             em {
                 color: LightSeaGreen;
@@ -14,13 +14,13 @@
     <body>
         <h1>google新聞標題列表</h1>
         <h2 class="title">
-            {% for i in title %}
+            {% for i in news_list %}
             <div>
-            {{i}}
+            {{i.title}}
             </div>
             {% endfor %}
         </h2>
-
+        
         <em>{{ current_time }}</em>
     </body>
 </html>
