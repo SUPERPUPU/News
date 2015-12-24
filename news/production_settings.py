@@ -1,4 +1,4 @@
-# mysite/mysite/production_settings.py
+# news/news/production_settings.py
 
 # Import all default settings.
 from .settings import *
