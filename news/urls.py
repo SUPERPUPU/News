@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from parse.views import parse
-
+from parse.views import home
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),

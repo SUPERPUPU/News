@@ -13,13 +13,24 @@
     </head>
     <body>
         <h1>google新聞標題列表</h1>
+        {% for i in news_list %}
+        <p>
         <h2 class="title">
-            {% for i in news_list %}
+            
             <div>
-            {{i.title}}
+                <a href="{{i.url}}"> {{i.title}}
+                    </a>
             </div>
-            {% endfor %}
+
         </h2>
+        
+            <div>
+                {{i.content}}
+            </div>
+        
+        </p>
+            {% endfor %}
+        
         
         <em>{{ current_time }}</em>
     </body>
