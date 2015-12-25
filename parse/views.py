@@ -52,7 +52,8 @@ def parse(request):
 				photo = photo1[0].get('src')
 
 		#txt = json.dumps(bfsoup.find_all('.story_content', "p")[0].text,ensure_ascii=False)
-
+		if photo == 1:
+			photo = "//upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/275px-Cat03.jpg"
     	#add to database
 		#cur.execute (sql, data)
 		News.objects.create(title = title, content = content, source = source, url = url, photo = photo)

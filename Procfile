@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath news news.wsgi
+web: gunicorn news.wsgi --log-file -
