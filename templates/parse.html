@@ -2,11 +2,8 @@
 <html>
     <head>
         <title>新聞標題</title>
-        <style>
-         <style type="text/css"> 
-            div { 
-                background-color:#FF0000; 
-            } 
+         <style type="text/css">
+
             body {
                 background-color: #CCBBFF;
             }
@@ -20,21 +17,20 @@
                 font-weight: bold;
                 text-align: center;
                 width: 100%;
-                display: inline-block;
-                  vertical-align: middle;
-                  -webkit-transform: translateZ(0);
-                  transform: translateZ(0);
-                  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-                  -webkit-backface-visibility: hidden;
-                  backface-visibility: hidden;
-                  -moz-osx-font-smoothing: grayscale;
-                  overflow: hidden;
-                  -webkit-transition-duration: 0.3s;
-                  transition-duration: 0.3s;
+                display: block;
+                vertical-align: middle;
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                -moz-osx-font-smoothing: grayscale;
+                overflow: hidden;
+                -webkit-transition-duration: 0.3s;
+                transition-duration: 0.3s;
                 -webkit-transition-property: color, background-color;
                 transition-property: color, background-color;
             }
-
 
             #main-title:hover, #main-title:focus, #main-title:active {
               background-color: #FF8800;
@@ -44,6 +40,8 @@
             #body{
                 max-width: 100%;
                 font-family: 微軟正黑體;
+                margin: 0px auto;
+                text-align: center;
             }
 
             a{
@@ -88,6 +86,7 @@
                 transition-duration: 0.3s;
                 -webkit-transition-property: transform;
                 transition-property: transform;
+
             }
             .paragraph:hover{
 
@@ -135,8 +134,15 @@
           </style>
     </head>
     <body>
+    <div class = "head-top">
         <div id = "main-title">Google新聞標題列表</div>
-
+        {% if request.user.is_authenticated %}
+            <p>{{request.user}} 您已經登入囉</p>
+            <div id = "logout"><a href="/accounts/logout">登出logout</a> </div>
+        {% else %}
+           <div id = "login"><a href="/accounts/login">登入login</a></div>
+        {% endif %}
+    </div>
         <div id = "body">
         {% for i in news_list %}
 
@@ -149,10 +155,10 @@
         {%endif%}
         <h2 class="title">
             
-            <div class = "title-url">
+            <span class = "title-url">
                 <a href="{{i.url}}"> {{i.title}}
                     </a>
-            </div>
+            </span>
 
         </h2>
         </div>

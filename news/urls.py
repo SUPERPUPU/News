@@ -16,9 +16,12 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from parse.views import parse
+from django.contrib.auth.views import login, logout
 #from parse.views import home
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', parse),
+    url(r'^accounts/login/$', login),
+    url(r'^accounts/logout/$', logout, {'next_page': '/'}),
 ]
