@@ -138,9 +138,10 @@
         <div id = "main-title">Google新聞標題列表</div>
         {% if request.user.is_authenticated %}
             <p>{{request.user}} 您已經登入囉</p>
-            <div id = "logout"><a href="/accounts/logout">登出logout</a> </div>
+            <div id = "logout"><a href="/accounts/logout">登出logout</a></div>
         {% else %}
-           <div id = "login"><a href="/accounts/login">登入login</a></div>
+            <div id = "register"><a href="/accounts/register">註冊register</a> </div>
+            <div id = "login"><a href="/accounts/login">登入login</a></div>
         {% endif %}
     </div>
         <div id = "body">

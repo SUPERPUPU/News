@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from parse.views import parse
+from parse.views import parse, register
 from django.contrib.auth.views import login, logout
 #from parse.views import home
 
@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^$', parse),
     url(r'^accounts/login/$', login),
     url(r'^accounts/logout/$', logout, {'next_page': '/'}),
+    url(r'^accounts/register/$', register),
 ]
