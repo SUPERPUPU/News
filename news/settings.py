@@ -11,7 +11,13 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from __future__ import absolute_import
 import os
+import djcelery
+from celery.schedules import crontab
+from datetime import timedelta
+
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -36,6 +42,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'parse',
+    'djcelery',
+    #'django-crontab',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -47,7 +55,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-
     'django.contrib.auth.middleware.AuthenticationMiddleware',  # add user system
 )
 
@@ -56,7 +63,7 @@ ROOT_URLCONF = 'news.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR + "/templates", ],
+        'DIRS': [BASE_DIR + "/templates/", ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +75,32 @@ TEMPLATES = [
         },
     },
 ]
+
+# CRONJOBS = [
+#     ('*/5 * * * *', 'news.parse.cron.parse_news')
+# ]
+
+
+djcelery.setup_loader()
+
+# CELERY SETTINGS
+BROKER_URL = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+CELERY_TIMEZONE = "Asia/Taipei"
+
+CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
+
+CELERYBEAT_SCHEDULE = {
+    # Executes every 30 seconds
+    'add-every-30-seconds': {
+        'task': 'parse.tasks.add',
+        'schedule': timedelta(seconds=30),
+    },
+}
+
 
 LOGIN_REDIRECT_URL = "/"
 
@@ -92,7 +125,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC+8'
 
 USE_I18N = True
 
